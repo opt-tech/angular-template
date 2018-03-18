@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
     this.cpuHandType = HandTypes.HIDDEN;
   }
 
-  onGameStart(yourHandType: string) {
+  startsGame(yourHandType: string) {
     this.yourHandType = yourHandType;
     this.gameService.fight(yourHandType).subscribe(result => {
       this.cpuHandType = result['cpuHandType'];

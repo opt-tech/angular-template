@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {GameComponent} from './game.component';
 import {GameControllerComponent} from '../game-controller/game-controller.component';
 import {GameService} from '../game.service';
@@ -36,7 +35,7 @@ describe('GameComponent', () => {
     const gameService = new GameService();
     gameService.getCpuHandType = () => 'グー';
     component = new GameComponent(gameService);
-    component.onGameStart('グー');
+    component.startsGame('グー');
 
     expect(component.yourHandType).toEqual('グー');
     expect(component.cpuHandType).toEqual('グー');

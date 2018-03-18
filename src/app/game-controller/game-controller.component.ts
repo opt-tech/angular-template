@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {GameComponent} from '../game/game.component';
 import {HandTypes} from '../HandTypes';
 
-
 @Component({
   selector: 'app-game-controller',
   templateUrl: './game-controller.component.html',
@@ -19,6 +18,6 @@ export class GameControllerComponent implements OnInit {
   }
 
   onSelect(handType: string) {
-    this.gameComponent.onGameStart(handType);
+    this.gameComponent.startsGame(handType);
   }
 }

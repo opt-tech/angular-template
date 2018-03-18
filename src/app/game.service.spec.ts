@@ -1,5 +1,4 @@
 import {TestBed, inject} from '@angular/core/testing';
-
 import {GameService} from './game.service';
 
 describe('GameService', () => {
@@ -32,7 +31,6 @@ describe('GameService', () => {
       expect(result['judgement']).toEqual('引き分け');
       expect(result['cpuHandType']).toEqual('グー');
     });
-
 
   }));
 });
