@@ -7,16 +7,24 @@ import {GameService} from '../game.service';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  result: string;
+  judgement: string;
+  yourHandType: string;
+  cpuHandType: string;
   constructor(private gameService: GameService) {
   }
 
   ngOnInit() {
-    this.result = 'not start';
+    this.judgement = 'not start';
+    this.yourHandType = '???';
+    this.cpuHandType = '???';
+
   }
 
   onGameStart(yourHandType: string) {
-    this.gameService.fight(yourHandType).subscribe(result => this.result = result);
+    this.yourHandType = yourHandType;
+    this.gameService.fight(yourHandType).subscribe( result => {
+      this.cpuHandType = result.cpuHandType;
+      this.judgement = result.judgement;
+    });
   }
-
 }

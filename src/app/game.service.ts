@@ -4,7 +4,6 @@ import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class GameService {
-
   constructor() {
   }
 
@@ -34,7 +33,6 @@ export class GameService {
         return 'draw';
       }
     }
-
   }
 
   getCpuHandType() {
@@ -43,6 +41,9 @@ export class GameService {
 
   fight(yourHandType: string): Observable<string> {
     const cpuHandType = this.getCpuHandType();
-    return of(this.judgeHands(yourHandType, cpuHandType));
+    return of({
+      judgement: this.judgeHands(yourHandType, cpuHandType),
+      cpuHandType: cpuHandType,
+    });
   }
 }
