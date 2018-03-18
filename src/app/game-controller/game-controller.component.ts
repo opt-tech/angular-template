@@ -8,7 +8,6 @@ import {GameService} from '../game.service';
   styleUrls: ['./game-controller.component.css']
 })
 export class GameControllerComponent implements OnInit {
-
   constructor(private gameService: GameService) {
   }
 
@@ -17,6 +16,7 @@ export class GameControllerComponent implements OnInit {
 
   onSelect(handType: string) {
     const result = this.gameService.fight(handType);
+
     console.log(result);
   }
 }

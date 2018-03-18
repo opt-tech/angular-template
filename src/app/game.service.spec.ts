@@ -20,7 +20,8 @@ describe('judgeHands', () => {
       providers: [GameService]
     });
   });
-  it('should be exact judge', inject([GameService], (service: GameService) => {
+
+  it('should judge exactly', inject([GameService], (service: GameService) => {
     expect(service.judgeHands('グー', 'グー')).toEqual('draw');
     expect(service.judgeHands('グー', 'チョキ')).toEqual('win');
     expect(service.judgeHands('グー', 'パー')).toEqual('lose');
