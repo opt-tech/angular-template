@@ -17,7 +17,6 @@ export class GameComponent implements OnInit {
     this.judgement = 'not start';
     this.yourHandType = '???';
     this.cpuHandType = '???';
-
   }
 
   onGameStart(yourHandType: string) {

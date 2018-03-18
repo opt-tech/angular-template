@@ -1,10 +1,13 @@
-<div>
-  CPU: {{cpuHandType}}
+<div class="game-container">
+  <dl>
+    <dt>CPU:</dt>
+    <dd>{{cpuHandType}}</dd>
+    <dt>あなた:</dt>
+    <dd>{{yourHandType}}</dd>
+  </dl>
+  <div>
+    {{judgement}}
+  </div>
+  <app-game-controller></app-game-controller>
+
 </div>
-<div>
-  あなた: {{yourHandType}}
-</div>
-<div>
-  {{judgement}}
-</div>
-<app-game-controller></app-game-controller>
