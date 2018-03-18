@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from '../game.service';
+import {HandTypes} from '../HandTypes';
 
 @Component({
   selector: 'app-game',
@@ -10,20 +11,21 @@ export class GameComponent implements OnInit {
   judgement: string;
   yourHandType: string;
   cpuHandType: string;
+
   constructor(private gameService: GameService) {
   }
 
   ngOnInit() {
     this.judgement = 'not start';
-    this.yourHandType = '???';
-    this.cpuHandType = '???';
+    this.yourHandType = HandTypes.UNSHOWN;
+    this.cpuHandType = HandTypes.UNSHOWN;
   }
 
   onGameStart(yourHandType: string) {
     this.yourHandType = yourHandType;
-    this.gameService.fight(yourHandType).subscribe( result => {
-      this.cpuHandType = result.cpuHandType;
-      this.judgement = result.judgement;
+    this.gameService.fight(yourHandType).subscribe(result => {
+      this.cpuHandType = result['cpuHandType'];
+      this.judgement = result['judgement'];
     });
   }
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
+import { HandTypes } from './HandTypes';
 
 @Injectable()
 export class GameService {
@@ -8,26 +9,26 @@ export class GameService {
   }
 
   judgeHands(yourHandType: string, cpuHandType: string): string {
-    if (yourHandType === 'グー') {
-      if (cpuHandType === 'グー') {
+    if (yourHandType === HandTypes.ROCK) {
+      if (cpuHandType === HandTypes.ROCK) {
         return 'draw';
-      } else if (cpuHandType === 'チョキ') {
+      } else if (cpuHandType === HandTypes.SCISSORS) {
         return 'win';
       } else {
         return 'lose';
       }
-    } else if (yourHandType === 'チョキ') {
-      if (cpuHandType === 'グー') {
+    } else if (yourHandType === HandTypes.SCISSORS) {
+      if (cpuHandType === HandTypes.ROCK) {
         return 'lose';
-      } else if (cpuHandType === 'チョキ') {
+      } else if (cpuHandType === HandTypes.SCISSORS) {
         return 'draw';
       } else {
         return 'win';
       }
     } else {
-      if (cpuHandType === 'グー') {
+      if (cpuHandType === HandTypes.ROCK) {
         return 'win';
-      } else if (cpuHandType === 'チョキ') {
+      } else if (cpuHandType === HandTypes.SCISSORS) {
         return 'lose';
       } else {
         return 'draw';
@@ -38,15 +39,15 @@ export class GameService {
   getCpuHandType() {
     const a = Math.floor(Math.random() * 3);
     if (a === 0) {
-      return 'グー';
+      return HandTypes.ROCK;
     } else if (a === 1) {
-      return 'チョキ';
-    } else if (a === 2) {
-      return 'パー';
+      return HandTypes.SCISSORS;
+    } else {
+      return HandTypes.PAPER;
     }
   }
 
-  fight(yourHandType: string): Observable<string> {
+  fight(yourHandType: string): Observable<object> {
     const cpuHandType = this.getCpuHandType();
     return of({
       judgement: this.judgeHands(yourHandType, cpuHandType),
