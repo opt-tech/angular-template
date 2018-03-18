@@ -12,16 +12,8 @@ describe('GameService', () => {
   it('should be created', inject([GameService], (service: GameService) => {
     expect(service).toBeTruthy();
   }));
-});
 
-describe('judgeHands', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [GameService]
-    });
-  });
-
-  it('should judge exactly', inject([GameService], (service: GameService) => {
+  it('judge should judge exactly', inject([GameService], (service: GameService) => {
     expect(service.judgeHands('グー', 'グー')).toEqual('引き分け');
     expect(service.judgeHands('グー', 'チョキ')).toEqual('あなたの勝ち！');
     expect(service.judgeHands('グー', 'パー')).toEqual('あなたの負け・・・');
@@ -32,4 +24,16 @@ describe('judgeHands', () => {
     expect(service.judgeHands('パー', 'チョキ')).toEqual('あなたの負け・・・');
     expect(service.judgeHands('パー', 'パー')).toEqual('引き分け');
   }));
+
+  it ('fight should returns judgement and cpuHandType', inject([GameService], (service: GameService) => {
+    console.log(service.fight('グー'));
+    service.getCpuHandType = () => 'グー';
+    service.fight('グー').subscribe(result => {
+      expect(result['judgement']).toEqual('引き分け');
+      expect(result['cpuHandType']).toEqual('グー');
+    });
+
+
+  }));
 });
+

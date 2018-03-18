@@ -25,4 +25,21 @@ describe('GameComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have parameters', () => {
+    expect(component.judgement).toEqual('あなたが選択中・・・');
+    expect(component.cpuHandType).toEqual('???');
+    expect(component.yourHandType).toEqual('???');
+  });
+
+  it('should be changed', () => {
+    const gameService = new GameService();
+    gameService.getCpuHandType = () => 'グー';
+    component = new GameComponent(gameService);
+    component.onGameStart('グー');
+
+    expect(component.yourHandType).toEqual('グー');
+    expect(component.cpuHandType).toEqual('グー');
+    expect(component.judgement).toEqual('引き分け');
+  });
 });
