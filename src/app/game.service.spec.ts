@@ -22,14 +22,14 @@ describe('judgeHands', () => {
   });
 
   it('should judge exactly', inject([GameService], (service: GameService) => {
-    expect(service.judgeHands('グー', 'グー')).toEqual('draw');
-    expect(service.judgeHands('グー', 'チョキ')).toEqual('win');
-    expect(service.judgeHands('グー', 'パー')).toEqual('lose');
-    expect(service.judgeHands('チョキ', 'グー')).toEqual('lose');
-    expect(service.judgeHands('チョキ', 'チョキ')).toEqual('draw');
-    expect(service.judgeHands('チョキ', 'パー')).toEqual('win');
-    expect(service.judgeHands('パー', 'グー')).toEqual('win');
-    expect(service.judgeHands('パー', 'チョキ')).toEqual('lose');
-    expect(service.judgeHands('パー', 'パー')).toEqual('draw');
+    expect(service.judgeHands('グー', 'グー')).toEqual('引き分け');
+    expect(service.judgeHands('グー', 'チョキ')).toEqual('あなたの勝ち！');
+    expect(service.judgeHands('グー', 'パー')).toEqual('あなたの負け・・・');
+    expect(service.judgeHands('チョキ', 'グー')).toEqual('あなたの負け・・・');
+    expect(service.judgeHands('チョキ', 'チョキ')).toEqual('引き分け');
+    expect(service.judgeHands('チョキ', 'パー')).toEqual('あなたの勝ち！');
+    expect(service.judgeHands('パー', 'グー')).toEqual('あなたの勝ち！');
+    expect(service.judgeHands('パー', 'チョキ')).toEqual('あなたの負け・・・');
+    expect(service.judgeHands('パー', 'パー')).toEqual('引き分け');
   }));
 });

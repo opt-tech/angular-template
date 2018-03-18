@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import { HandTypes } from './HandTypes';
+import {Judgements} from './Judgements';
 
 @Injectable()
 export class GameService {
@@ -11,27 +12,27 @@ export class GameService {
   judgeHands(yourHandType: string, cpuHandType: string): string {
     if (yourHandType === HandTypes.ROCK) {
       if (cpuHandType === HandTypes.ROCK) {
-        return 'draw';
+        return Judgements.DRAW;
       } else if (cpuHandType === HandTypes.SCISSORS) {
-        return 'win';
+        return Judgements.YOUR_WIN;
       } else {
-        return 'lose';
+        return Judgements.YOUR_LOSE;
       }
     } else if (yourHandType === HandTypes.SCISSORS) {
       if (cpuHandType === HandTypes.ROCK) {
-        return 'lose';
+        return Judgements.YOUR_LOSE;
       } else if (cpuHandType === HandTypes.SCISSORS) {
-        return 'draw';
+        return Judgements.DRAW;
       } else {
-        return 'win';
+        return Judgements.YOUR_WIN;
       }
     } else {
       if (cpuHandType === HandTypes.ROCK) {
-        return 'win';
+        return Judgements.YOUR_WIN;
       } else if (cpuHandType === HandTypes.SCISSORS) {
-        return 'lose';
+        return Judgements.YOUR_LOSE;
       } else {
-        return 'draw';
+        return Judgements.DRAW;
       }
     }
   }

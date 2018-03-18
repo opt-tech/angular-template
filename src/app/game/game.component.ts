@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from '../game.service';
 import {HandTypes} from '../HandTypes';
+import {Judgements} from '../Judgements';
 
 @Component({
   selector: 'app-game',
@@ -16,7 +17,7 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.judgement = 'not start';
+    this.judgement = Judgements.BEFORE_FIGHT;
     this.yourHandType = HandTypes.HIDDEN;
     this.cpuHandType = HandTypes.HIDDEN;
   }
