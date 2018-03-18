@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GameService} from '../game.service';
+import {GameComponent} from '../game/game.component';
 
 
 @Component({
@@ -8,15 +8,13 @@ import {GameService} from '../game.service';
   styleUrls: ['./game-controller.component.css']
 })
 export class GameControllerComponent implements OnInit {
-  constructor(private gameService: GameService) {
+  constructor(private gameComponent: GameComponent) {
   }
 
   ngOnInit() {
   }
 
   onSelect(handType: string) {
-    const result = this.gameService.fight(handType);
-
-    console.log(result);
+    this.gameComponent.onGameStart(handType);
   }
 }

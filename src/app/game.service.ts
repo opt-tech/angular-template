@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class GameService {
@@ -39,8 +41,8 @@ export class GameService {
     return 'グー';
   }
 
-  fight(yourHandType: string): string {
+  fight(yourHandType: string): Observable<string> {
     const cpuHandType = this.getCpuHandType();
-    return this.judgeHands(yourHandType, cpuHandType);
+    return of(this.judgeHands(yourHandType, cpuHandType));
   }
 }
