@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {GameService} from '../game.service';
+
 
 @Component({
   selector: 'app-game-controller',
@@ -7,14 +9,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class GameControllerComponent implements OnInit {
 
-  constructor() {
+  constructor(private gameService: GameService) {
   }
 
   ngOnInit() {
   }
 
   onSelect(handType: string) {
-    console.log(handType);
+    const result = this.gameService.fight(handType);
+    console.log(result);
   }
-
 }
