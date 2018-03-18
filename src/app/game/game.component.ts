@@ -17,8 +17,8 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     this.judgement = 'not start';
-    this.yourHandType = HandTypes.UNSHOWN;
-    this.cpuHandType = HandTypes.UNSHOWN;
+    this.yourHandType = HandTypes.HIDDEN;
+    this.cpuHandType = HandTypes.HIDDEN;
   }
 
   onGameStart(yourHandType: string) {
