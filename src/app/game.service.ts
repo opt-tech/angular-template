@@ -36,7 +36,14 @@ export class GameService {
   }
 
   getCpuHandType() {
-    return 'グー';
+    const a = Math.floor(Math.random() * 3);
+    if (a === 0) {
+      return 'グー';
+    } else if (a === 1) {
+      return 'チョキ';
+    } else if (a === 2) {
+      return 'パー';
+    }
   }
 
   fight(yourHandType: string): Observable<string> {
