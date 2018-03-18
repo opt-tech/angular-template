@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-game-controller',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameControllerComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  onSelect(handType: string) {
+    console.log(handType);
   }
 
 }
